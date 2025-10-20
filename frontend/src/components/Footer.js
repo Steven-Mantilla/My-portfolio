@@ -85,9 +85,9 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-200 dark:border-slate-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-1">
+            <div className="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-1">
               © {currentYear} {personal.name}. Made with <Heart size={14} className="text-red-500" /> and React
-            </p>
+            </div>
             <p className="text-gray-500 dark:text-gray-500 text-sm">
               Designed & Built by Steven Kim Mantilla
             </p>
