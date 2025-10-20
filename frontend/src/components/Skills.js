@@ -1,11 +1,11 @@
 import React from 'react';
 import { 
-  SiPython, SiJava, SiCplusplus, SiGo, SiJavascript, SiHtml5, SiCss3,
+  SiPython, SiCplusplus, SiGo, SiJavascript, SiHtml5, SiCss3,
   SiReact, SiAngular, SiNodedotjs, SiDjango, SiLaravel,
   SiGit, SiGithub, SiFirebase, SiPostman, SiFigma, SiVercel,
   SiMysql, SiPostgresql
 } from 'react-icons/si';
-import { Database, MessageSquare } from 'lucide-react';
+import { Database, MessageSquare, Code } from 'lucide-react';
 import { portfolioData } from '../mock';
 
 const Skills = () => {
@@ -15,7 +15,7 @@ const Skills = () => {
   const techIcons = {
     // Languages
     'Python': SiPython,
-    'Java': SiJava,
+    'Java': Code, // Using generic code icon for Java
     'C++': SiCplusplus,
     'Go': SiGo,
     'JavaScript': SiJavascript,
