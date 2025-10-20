@@ -81,6 +81,58 @@ async def get_status_checks():
     
     return status_checks
 
+# Contact Form Endpoints
+@api_router.post("/contact")
+async def create_contact_message(input: ContactMessageCreate):
+    try:
+        # Validate input
+        if not input.name.strip():
+            raise HTTPException(status_code=400, detail="Name is required")
+        if not input.message.strip():
+            raise HTTPException(status_code=400, detail="Message is required")
+        if len(input.message) < 10:
+            raise HTTPException(status_code=400, detail="Message must be at least 10 characters")
+        
+        # Create contact message object
+        contact_obj = ContactMessage(**input.model_dump())
+        
+        # Convert to dict and serialize datetime to ISO string for MongoDB
+        doc = contact_obj.model_dump()
+        doc['timestamp'] = doc['timestamp'].isoformat()
+        
+        # Insert into database
+        await db.contact_messages.insert_one(doc)
+        
+        return {
+            "success": True,
+            "message": "Message sent successfully! I'll get back to you soon.",
+            "id": contact_obj.id
+        }
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        logging.error(f"Error creating contact message: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to send message. Please try again later.")
+
+@api_router.get("/contact")
+async def get_contact_messages():
+    try:
+        # Exclude MongoDB's _id field from the query results
+        messages = await db.contact_messages.find({}, {"_id": 0}).sort("timestamp", -1).to_list(1000)
+        
+        # Convert ISO string timestamps back to datetime objects
+        for msg in messages:
+            if isinstance(msg['timestamp'], str):
+                msg['timestamp'] = datetime.fromisoformat(msg['timestamp'])
+        
+        return {
+            "success": True,
+            "messages": [ContactMessage(**msg) for msg in messages]
+        }
+    except Exception as e:
+        logging.error(f"Error fetching contact messages: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch messages")
+
 # Include the router in the main app
 app.include_router(api_router)
 
