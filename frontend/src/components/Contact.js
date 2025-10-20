@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Send, Mail, User, MessageSquare } from 'lucide-react';
 import { toast } from '../hooks/use-toast';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,15 +25,26 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (will be replaced with actual API call)
-    setTimeout(() => {
+    try {
+      const response = await axios.post(`${API}/contact`, formData);
+      
+      if (response.data.success) {
+        toast({
+          title: "Message sent!",
+          description: response.data.message,
+        });
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data?.detail || "Failed to send message. Please try again.";
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive"
       });
-      setFormData({ name: '', email: '', message: '' });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
