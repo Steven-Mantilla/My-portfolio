@@ -36,24 +36,17 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex gap-4">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                    >
-                      <ExternalLink size={18} />
-                      <span className="font-medium">Live Demo</span>
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
-                    >
-                      <Github size={18} />
-                      <span className="font-medium">Code</span>
-                    </a>
+                    {project.liveUrl && project.liveUrl !== '#' && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                      >
+                        <ExternalLink size={18} />
+                        <span className="font-medium">Live Demo</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
