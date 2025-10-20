@@ -6,8 +6,8 @@ export const portfolioData = {
     email: "stevenmantilla02@gmail.com",
     phone: "(+63) 956-8826-328",
     location: "Philippines",
-    linkedin: "https://linkedin.com/in/stevenmantilla",
-    github: "https://github.com/stevenmantilla",
+    linkedin: "https://www.linkedin.com/in/steven-mantilla/",
+    github: "https://github.com/Steven-Mantilla2",
     resumeUrl: "/resume.pdf"
   },
   
