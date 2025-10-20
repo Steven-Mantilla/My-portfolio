@@ -47,8 +47,7 @@ export const portfolioData = {
       name: "Inventory & E-commerce Platform",
       description: "Full-stack e-commerce solution with inventory management, built with modern technologies for seamless user experience.",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://your-ecommerce-demo.com",
       image: "https://images.unsplash.com/photo-1557821552-17105176677c"
     },
     {
@@ -56,8 +55,7 @@ export const portfolioData = {
       name: "Budget Tracker",
       description: "Mobile-first budget tracking application with real-time expense monitoring and financial insights.",
       technologies: ["Ionic", "JavaScript", "JSON", "CSS"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: null,
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
     },
     {
@@ -65,8 +63,7 @@ export const portfolioData = {
       name: "Student Management System",
       description: "Comprehensive CRUD system for managing student records with secure authentication and role-based access.",
       technologies: ["Java", "MySQL", "JavaFX", "Authentication"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: null,
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
     },
     {
@@ -74,8 +71,7 @@ export const portfolioData = {
       name: "PyQuiz App",
       description: "Interactive quiz application with dynamic question generation and real-time scoring system.",
       technologies: ["Python", "Tkinter", "SQLite"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: null,
       image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173"
     }
   ],
